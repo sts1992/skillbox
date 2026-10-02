@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+work/
+output/
+*.pptx
+*.reconstruction.json
+*.validation.json
+.env
+.env.*

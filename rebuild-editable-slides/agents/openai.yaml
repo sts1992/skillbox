@@ -1,0 +1,5 @@
+interface:
+  display_name: Rebuild Editable Slides
+  short_description: Rebuild PDF and slide images as editable PowerPoint
+  default_prompt: Use $rebuild-editable-slides to rebuild the attached PDF or slide
+    image as editable PowerPoint objects and report uncertain elements.

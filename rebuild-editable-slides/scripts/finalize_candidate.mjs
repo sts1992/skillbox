@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+import path from 'node:path';
+import fs from 'node:fs/promises';
+import {pathToFileURL} from 'node:url';
+const [layoutPath,candidatePath,finalPath]=process.argv.slice(2);
+if(!layoutPath||!candidatePath||!finalPath)throw new Error('Usage: finalize_candidate.mjs reviewed-layout.json candidate.pptx final.pptx');
+const skill=process.env.PRESENTATIONS_SKILL_DIR;
+const runtime=process.env.CODEX_PRIMARY_RUNTIME_PYTHON;
+if(!skill||!path.isAbsolute(skill)||!runtime)throw new Error('Set PRESENTATIONS_SKILL_DIR to the installed Presentations skill root and use the supplied Codex Python runtime.');
+process.env.RUNTIME_NODE_MODULES=process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES;
+process.env.RUNTIME_NODE=process.env.CODEX_PRIMARY_RUNTIME_NODE;
+process.env.RUNTIME_PYTHON=process.env.CODEX_PRIMARY_RUNTIME_PYTHON;
+process.env.RUNTIME_BIN_DIR=path.join(process.env.CODEX_PRIMARY_RUNTIME,'dependencies/bin/override');
+const doc=JSON.parse(await fs.readFile(layoutPath,'utf8'));const workspaceDir=path.dirname(path.resolve(layoutPath));
+const {finalizePresentation}=await import(pathToFileURL(path.join(skill,'container_tools/artifact_tool_utils.mjs')).href);
+const elements=doc.slides.flatMap(s=>s.elements);const fonts=[...new Set(elements.filter(e=>e.type!=='image'&&e.type!=='line').flatMap(e=>[e.font??doc.defaultFont??'Arial',...(e.runs??[]).map(r=>r.font??e.font??'Arial')]).map(f=>doc.fontMap?.[f]??f))];
+const tableOwners=doc.slides.flatMap((s,i)=>s.elements.some(e=>e.type==='table')?[i+1]:[]);
+const chartOwners=doc.slides.flatMap((s,i)=>s.elements.some(e=>e.type==='chart')?[i+1]:[]);
+if(doc.slides.some(s=>!s.reviewed))throw new Error('All source pages must be reviewed before finalization');
+const size=doc.slides[0];
+await fs.mkdir(path.dirname(path.resolve(finalPath)),{recursive:true});
+const result=await finalizePresentation({workspaceDir,candidatePath:path.resolve(candidatePath),finalPath:path.resolve(finalPath),pythonExecutable:runtime,integrityValidatorPath:path.join(skill,'container_tools/inspect_presentation_package_integrity.py'),layoutValidatorPath:path.join(skill,'container_tools/inspect_presentation_layout_geometry.py'),layoutArgs:['--expected-slide-size-emu',`${Math.round(size.width*9525)},${Math.round(size.height*9525)}`,'--validate-bullet-geometry','--validate-heading-fit',...tableOwners.flatMap(x=>['--require-native-table-slide',String(x)])],explicitTotalSlideCount:doc.slides.length,requiredNativeTableOwnerSlides:tableOwners,requiredNativeChartOwnerSlides:chartOwners,materializeLiteralChartWorkbooks:chartOwners.length>0,fontPolicy:{basis:'design',families:fonts},verifyArtifactToolImport:true,receiptPath:path.join(workspaceDir,path.basename(finalPath)+'.validation.json')});
+console.log(JSON.stringify(result));
