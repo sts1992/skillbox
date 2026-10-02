@@ -1,0 +1,90 @@
+{
+  "説明": "すべて架空の静的レビュー用資料。ライブ query や設定変更は不要。",
+  "依頼": "checkout の監視で障害の見落としとコスト増加がないかレビューする。",
+  "採取時刻": "2026-10-02T10:05:00Z",
+  "窓": {
+    "開始": "2026-10-02T10:00:00Z",
+    "終了": "2026-10-02T10:05:00Z"
+  },
+  "利用者操作": "注文ボタンから注文確定まで。利用者から見える成功と遅延を知りたい。",
+  "目標案": {
+    "availability": 0.999,
+    "期間": "30 日",
+    "latency_seconds": 0.3,
+    "承認": "議論中。正式合意は未確認。"
+  },
+  "request_counter": {
+    "name": "checkout_requests_total",
+    "type": "counter",
+    "地点": "backend で受け取った要求。edge 到達前・edge 内の失敗は含まない。retry は各試行を数える。",
+    "window_increase": {
+      "success": 9900,
+      "failure": 100
+    },
+    "注記": "教材として reset・欠測はなく、すべて同一母集団の 5 分増分。"
+  },
+  "latency_histogram": {
+    "name": "checkout_duration_seconds",
+    "type": "classic_histogram",
+    "地点": "上記 backend の全要求。成功・失敗を分ける label はない。",
+    "finite_bucket_count": 8,
+    "exported_series": "有限 bucket 8 個、+Inf bucket 1 個、sum、count。任意の追加系列はない。",
+    "window_increase": {
+      "le_0.25": 8500,
+      "le_0.5": 9700,
+      "count": 10000
+    },
+    "注記": "0.3 の bucket はない。"
+  },
+  "dashboard": {
+    "global_p95": "avg(checkout_latency_seconds{quantile=\"0.95\"})",
+    "source_type": "各 Pod が計算する summary quantile",
+    "missing_data": "系列がない場合は 100% 成功として緑色表示"
+  },
+  "labels": {
+    "現状": [
+      "raw_path",
+      "request_id",
+      "method",
+      "status_class",
+      "pod"
+    ],
+    "観測値": {
+      "raw_path_distinct_per_hour": 20000,
+      "request_id": "要求ごとに異なる、上限なし",
+      "active_series": 680000,
+      "new_series_per_hour": 260000
+    },
+    "安全な置換案の上限": {
+      "route_template": 12,
+      "method": 3,
+      "status_class": 5,
+      "pod": 8
+    },
+    "注記": "組合せの独立性・全部の同時出現は未確認。"
+  },
+  "tracing": {
+    "SDK_head_probability": 0.05,
+    "collector_tail_policy": "collector に届いた trace のうちエラーを優先保持",
+    "dashboard_error_ratio": 0.65,
+    "dashboard_label": "全要求のエラー率",
+    "drop_metrics": "未提供",
+    "context_propagation": "非同期 queue を跨ぐ検証は未実施"
+  },
+  "alerts": [
+    {
+      "名前": "CPU 高負荷",
+      "式": "平均 CPU 使用率が 90% より大きい状態が 10 分",
+      "所有者": "基盤担当",
+      "runbook": "CPU の確認のみ"
+    }
+  ],
+  "不足資料": [
+    "ユーザー操作の重複除去または retry の取り扱い",
+    "edge の失敗件数",
+    "30 日の完全な系列",
+    "collector drop と queue の状態",
+    "backend/SDK の固定バージョン",
+    "料金の単価"
+  ]
+}

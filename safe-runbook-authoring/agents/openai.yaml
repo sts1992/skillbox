@@ -1,0 +1,4 @@
+interface:
+  display_name: "安全な運用手順書"
+  short_description: "実施条件・中止基準・復旧判断を明記した検証可能な運用手順書を作成する"
+  default_prompt: "$safe-runbook-authoring を使って、実行せずにこの運用作業の手順書を作成してください。"

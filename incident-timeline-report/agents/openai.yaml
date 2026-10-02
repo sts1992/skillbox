@@ -1,0 +1,4 @@
+interface:
+  display_name: "障害時系列レポート"
+  short_description: "複数の時刻表記と不確実性を保ちながら根拠付きの障害時系列をまとめる"
+  default_prompt: "$incident-timeline-report を使って、この記録から障害の時系列を整理してください。"

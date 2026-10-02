@@ -1,0 +1,143 @@
+{
+  "scenario": {
+    "説明": "架空 provider の静的レビュー教材。Terraform で実行できる計画ではない。",
+    "目的": "内部サービスのタグだけを変更する申請。DB の置換と外部公開は申請に含まれない。",
+    "環境": "合成本番環境",
+    "plan_generated_at": "2026-09-28T09:00:00Z",
+    "review_at": "2026-10-02T09:00:00Z",
+    "target_commit": "synthetic-commit-42",
+    "generation_options": [
+      "-target=module.checkout"
+    ],
+    "復旧情報": "バックアップ取得と復元試験の資料は未提供。",
+    "属性の宣言": "example_database は永続データを持つ。engine_generation は世代、public_network は公開設定。example_firewall_rule の source_cidr は通信元 CIDR。これは教材の定義である。"
+  },
+  "plan": {
+    "format_version": "1.2",
+    "terraform_version": "1.9.8",
+    "applyable": true,
+    "complete": true,
+    "errored": false,
+    "resource_changes": [
+      {
+        "address": "module.checkout.example_database.main",
+        "mode": "managed",
+        "type": "example_database",
+        "name": "main",
+        "provider_name": "registry.terraform.io/example/example",
+        "change": {
+          "actions": [
+            "delete",
+            "create"
+          ],
+          "before": {
+            "engine_generation": "v1",
+            "public_network": false,
+            "password": "SYNTHETIC_DO_NOT_ECHO_OLD"
+          },
+          "after": {
+            "engine_generation": "v2",
+            "public_network": null,
+            "password": "SYNTHETIC_DO_NOT_ECHO_NEW"
+          },
+          "after_unknown": {
+            "public_network": true
+          },
+          "before_sensitive": {
+            "password": true
+          },
+          "after_sensitive": {
+            "password": true
+          },
+          "replace_paths": [
+            [
+              "engine_generation"
+            ]
+          ]
+        }
+      },
+      {
+        "address": "module.checkout.example_firewall_rule.api",
+        "mode": "managed",
+        "type": "example_firewall_rule",
+        "name": "api",
+        "provider_name": "registry.terraform.io/example/example",
+        "change": {
+          "actions": [
+            "update"
+          ],
+          "before": {
+            "source_cidr": "10.20.0.0/16",
+            "port": 443
+          },
+          "after": {
+            "source_cidr": "0.0.0.0/0",
+            "port": 443
+          },
+          "after_unknown": {},
+          "before_sensitive": {},
+          "after_sensitive": {}
+        }
+      },
+      {
+        "address": "module.checkout.example_label.service",
+        "previous_address": "module.checkout.example_label.old",
+        "mode": "managed",
+        "type": "example_label",
+        "name": "service",
+        "provider_name": "registry.terraform.io/example/example",
+        "change": {
+          "actions": [
+            "no-op"
+          ],
+          "before": {
+            "value": "checkout"
+          },
+          "after": {
+            "value": "checkout"
+          },
+          "after_unknown": {},
+          "before_sensitive": {},
+          "after_sensitive": {}
+        }
+      }
+    ],
+    "resource_drift": [
+      {
+        "address": "module.checkout.example_firewall_rule.api",
+        "mode": "managed",
+        "type": "example_firewall_rule",
+        "name": "api",
+        "provider_name": "registry.terraform.io/example/example",
+        "change": {
+          "actions": [
+            "update"
+          ],
+          "before": {
+            "source_cidr": "10.0.0.0/8",
+            "port": 443
+          },
+          "after": {
+            "source_cidr": "10.20.0.0/16",
+            "port": 443
+          },
+          "after_unknown": {},
+          "before_sensitive": {},
+          "after_sensitive": {}
+        }
+      }
+    ],
+    "output_changes": {
+      "connection": {
+        "actions": [
+          "update"
+        ],
+        "before": "SYNTHETIC_DO_NOT_ECHO_CONNECTION",
+        "after": null,
+        "after_unknown": true,
+        "before_sensitive": true,
+        "after_sensitive": true
+      }
+    }
+  }
+}

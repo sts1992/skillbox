@@ -1,0 +1,4 @@
+interface:
+  display_name: "出典付き調査ブリーフ"
+  short_description: "主張と一次出典を対応付け情報の鮮度・矛盾・未確認点を明示して調査する"
+  default_prompt: "$source-grounded-research-brief を使って、この論点を出典と不確実性付きで調査してください。"

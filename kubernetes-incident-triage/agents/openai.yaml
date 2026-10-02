@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kubernetes障害切り分け"
+  short_description: "対象を絞った読み取り専用の証拠からKubernetes障害を切り分ける"
+  default_prompt: "$kubernetes-incident-triage を使って、この障害を読み取り専用で切り分けてください。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "構成図仕様作成"
+  short_description: "資料の根拠に追跡できるノード・接続・境界から構成図の仕様を作成する"
+  default_prompt: "$architecture-diagram-spec を使って、この資料から根拠付きの構成図仕様を作成してください。"

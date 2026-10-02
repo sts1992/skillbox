@@ -1,0 +1,4 @@
+interface:
+  display_name: "Terraform変更レビュー"
+  short_description: "保存済みplanの削除・置換・権限変更と不確実性を根拠付きで整理する"
+  default_prompt: "$terraform-change-review を使って、このplanを読み取り専用でレビューしてください。"

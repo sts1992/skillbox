@@ -1,0 +1,4 @@
+interface:
+  display_name: "監視の不足レビュー"
+  short_description: "ユーザー影響と監視証拠を対応付けSLI・ログ・トレースの不足を整理する"
+  default_prompt: "$observability-gap-review を使って、このサービスの監視不足を根拠付きでレビューしてください。"

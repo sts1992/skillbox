@@ -1,0 +1,4 @@
+interface:
+  display_name: "技術判断記録"
+  short_description: "技術選択の根拠・代替案・トレードオフと再検討条件を一つの記録にまとめる"
+  default_prompt: "$technical-decision-record を使って、この技術選択の判断記録を作成してください。"

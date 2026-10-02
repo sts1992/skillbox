@@ -1,0 +1,4 @@
+interface:
+  display_name: "クラウド費用調査"
+  short_description: "クラウド費用の増減を利用量・単価・割引に分解して根拠付きで調査する"
+  default_prompt: "$cloud-cost-investigation を使って、この費用増加を明細から調査してください。"
