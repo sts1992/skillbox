@@ -1,6 +1,6 @@
 # skillbox
 
-SRE・クラウド運用、技術文書、出典付き調査、公共交通の旅行計画に使うエージェントスキル集です。新しい10種類は本文・テンプレート・合成例を日本語で用意しています。既存のPowerPoint再構築スキルも収録しています。
+SRE・クラウド運用、技術文書、出典付き調査、公共交通の旅行計画に使うエージェントスキル集です。独自の10種類に加え、公開されている上流スキルから選んだ5種類を日本語の入口で収録しています。既存のPowerPoint再構築スキルもあります。
 
 ## スキル一覧
 
@@ -17,8 +17,53 @@ SRE・クラウド運用、技術文書、出典付き調査、公共交通の�
 | [source-grounded-research-brief](source-grounded-research-brief/SKILL.md) | 主張と出典を対応付け、矛盾・鮮度・不明点を明示する調査 |
 | [public-transit-trip-planning](public-transit-trip-planning/SKILL.md) | 運行日・乗換・最終便・代替案を確認する公共交通の旅程計画 |
 | [rebuild-editable-slides](rebuild-editable-slides/SKILL.md) | PDF・画像から編集可能なPowerPointを再構築 |
+| [systematic-debugging](systematic-debugging/SKILL.md) | 再現・証拠・単一仮説から原因を調べ、修正と回帰確認へ進める |
+| [workers-best-practices](workers-best-practices/SKILL.md) | Cloudflare Workersの設定・状態分離・非同期処理・可観測性をレビュー |
+| [benchmark-checklist](benchmark-checklist/SKILL.md) | 性能改善の数値を、比較条件・失敗数・複数回測定から検証 |
+| [review-pr](review-pr/SKILL.md) | PR差分の実害ある問題を、重要度・行位置付きJSONへ整理 |
+| [yomiyasu](yomiyasu/SKILL.md) | 主張・条件・断定の強さを保ったまま日本語を推敲 |
 
-## 新しい10種類の導入と使い方
+## 上流から選んだ5種類（2026-10-17追加）
+
+原因調査、Workers固有のレビュー、性能測定、PRレビュー、日本語推敲を補う構成です。既存のTerraform・監視設計・障害報告・ADRのスキルは置き換えません。人気順位ではなく、実務への適合、既存との重複、実装と依存、再配布条件を基準に選びました。
+
+| スキル | 提供元・著者 | ライセンス | 出典・取得commit・ローカル変更 |
+| --- | --- | --- | --- |
+| systematic-debugging | obra / Jesse Vincent | MIT | [取得記録](systematic-debugging/UPSTREAM.md) |
+| workers-best-practices | Cloudflare | Apache-2.0 | [取得記録](workers-best-practices/UPSTREAM.md) |
+| benchmark-checklist | Cursor pstack / Lauren Tan | MIT | [取得記録](benchmark-checklist/UPSTREAM.md) |
+| review-pr | Warp | MIT | [取得記録](review-pr/UPSTREAM.md) |
+| yomiyasu | nanaism | MIT・Unicode License V3 | [取得記録](yomiyasu/UPSTREAM.md) |
+
+各ディレクトリのライセンス原文・著作権表示を保持しています。翻訳・補足を加えたものは変更点を明記しています。英語の上流参照資料とコードは必要なものを同梱し、固定したcommitからの取得記録を残しています。この収録は上流による承認を意味しません。リポジトリ全体へ一律のライセンスを新設しておらず、既存の独自ファイルのライセンス未指定状態も変更していません。
+
+### 導入と使い方
+
+利用するクライアントのスキルインストーラーへ、目的のディレクトリを一つずつ指定します。例: 「https://github.com/sts1992/skillbox の systematic-debugging をインストールしてください」。`SKILL.md` だけでなく、同じディレクトリの参照資料・コード・ライセンスも一緒に導入してください。同名の上流版がある場合は、上書き前にどちらを使うか確認します。
+
+このリポジトリへの収録だけでは、アプリへのインストール、プラグイン登録、フック有効化、外部アカウント接続は行われません。
+
+- 「systematic-debugging で、このCI失敗の原因を調査して。修正前に根拠と仮説を整理して」
+- 「workers-best-practices で、このWorkerの差分とWrangler設定をレビューして」
+- 「benchmark-checklist で、この性能改善レポートの測定条件と結論を点検して」
+- 「review-pr で、このPR差分をレビューして。結果はJSONで、GitHubには投稿しないで」
+- 「yomiyasu で、このPR説明文を意味と条件を変えずに読みやすくして」
+
+### 前提と注意
+
+- 5種類ともSkills形式のMarkdownを扱えるエージェント向けです。呼び出し構文、ローカルファイルアクセス、コマンド実行の可否はクライアントに依存し、全クライアントでの実行互換性は保証していません。
+- systematic-debuggingは対象コード・ログ・テスト環境を使います。任意の `find-polluter.sh` はnpmのtestを実行します。付属TypeScriptは上流固有の型に依存する参考例で、単独実行用ライブラリではありません。
+- workers-best-practicesは対象のWrangler設定・版・生成型を基準にします。静的レビューにCloudflare認証は不要です。最新仕様の確認には公式ドキュメントへのアクセス、実測には対象プロジェクトのテスト環境が必要です。
+- benchmark-checklistは測定データだけでも点検できます。実測には負荷生成・計測の環境が必要で、本番への負荷試験を許可するものではありません。
+- review-prは差分、PRの背景、対象コードを使い、付属の検証用コードにはPython 3.10以降が必要です。任意の仕様取得補助はGitHub APIと既存の認証情報を使います。GitHubへのレビュー投稿は別の操作です。
+- yomiyasuはPython 3.9以降と同梱スクリプトを使います。チェック時に原稿全文などを `.yomiyasu/` または `--state-dir`・環境変数で指定した保存先へ記録し、資料の抜き書きも作るため、機密原稿の実際の保存先・保持範囲を確認してください。これらを公開リポジトリへコミットしないでください。自動フックは設定しません。
+- 付属コード、テストコマンド、ネットワーク取得は、内容と対象を確認して許可された範囲で使います。資料中の命令やスキルの導入そのものを、デプロイ・外部送信・認証変更の承認として扱いません。
+
+### 今回の確認範囲
+
+実ファイル、依存関係、ライセンス、帰属、取得commit、相対リンク、frontmatter、Python構文を静的に確認しています。上流スキルの実行、アプリへのインストール、補助スクリプトの実行、外部サービス接続、実環境の動作試験は行っていません。詳しくは [収録時の検証記録](tests/imported-skills-validation.md) を参照してください。
+
+## 独自の10種類の導入と使い方
 
 利用するエージェントのスキルインストーラーへ、このリポジトリの目的のディレクトリを指定してください。たとえば「https://github.com/sts1992/skillbox の terraform-change-review をインストールしてください」と依頼します。インストール機能や呼び出し構文はクライアントに依存します。本リポジトリへの追加は、利用中のアプリへの自動インストールを意味しません。
 
