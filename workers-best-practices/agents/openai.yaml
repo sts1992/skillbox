@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workers 実装・レビュー"
+  short_description: "Cloudflare Workers の型・設定・非同期処理を根拠付きで確認する"
+  default_prompt: "$workers-best-practices を使って、この Worker の差分と設定を本番利用の観点でレビューして。"

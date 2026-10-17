@@ -1,0 +1,4 @@
+interface:
+  display_name: "根拠を積むデバッグ"
+  short_description: "再現・証拠・単一仮説から根本原因を調べ、修正と回帰確認につなげる"
+  default_prompt: "$systematic-debugging でこの不具合を調査し、根拠と未確認事項、次の検証を整理してください。"

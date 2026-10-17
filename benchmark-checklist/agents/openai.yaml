@@ -1,0 +1,6 @@
+interface:
+  display_name: "ベンチマーク結果の検証"
+  short_description: "性能比較の公平性・再現性・正しさを実行証拠と七つの質問で確かめる"
+  default_prompt: "$benchmark-checklist を使って、この性能測定結果から高速化を主張してよいか検証して。"
+policy:
+  allow_implicit_invocation: false
