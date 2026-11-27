@@ -1,6 +1,6 @@
 # skillbox
 
-SRE・クラウド運用、技術文書、出典付き調査、公共交通の旅行計画に使うエージェントスキル集です。独自の10種類に加え、公開されている上流スキルから選んだ5種類を日本語の入口で収録しています。既存のPowerPoint再構築スキルもあります。
+SRE・クラウド運用、技術文書、出典付き調査、公共交通の旅行計画に使うエージェントスキル集です。独自の10種類に加え、公開されている上流スキルから選んだ15種類を日本語の入口で収録しています。既存のPowerPoint再構築スキルもあります。
 
 ## スキル一覧
 
@@ -22,6 +22,35 @@ SRE・クラウド運用、技術文書、出典付き調査、公共交通の�
 | [benchmark-checklist](benchmark-checklist/SKILL.md) | 性能改善の数値を、比較条件・失敗数・複数回測定から検証 |
 | [review-pr](review-pr/SKILL.md) | PR差分の実害ある問題を、重要度・行位置付きJSONへ整理 |
 | [yomiyasu](yomiyasu/SKILL.md) | 主張・条件・断定の強さを保ったまま日本語を推敲 |
+| [promql](promql/SKILL.md) | PromQLのエラー率・レイテンシ・SLO・カーディナリティを点検 |
+| [docker-build-strategies](docker-build-strategies/SKILL.md) | Dockerfileのマルチステージ化、キャッシュ、非root実行を点検 |
+| [workers-profiling](workers-profiling/SKILL.md) | Cloudflare WorkersのCPU・メモリ所要量をプロファイルから分析 |
+| [a11y-debugging](a11y-debugging/SKILL.md) | アクセシビリティツリーとキーボード操作でUIを点検 |
+| [debug-optimize-lcp](debug-optimize-lcp/SKILL.md) | 画面の主要コンテンツ表示が遅い原因をLCP計測から特定 |
+| [break-ui](break-ui/SKILL.md) | 長い文字列・欠損・空データでUIの表示崩れを検証 |
+| [ux-heuristics](ux-heuristics/SKILL.md) | フォームやナビゲーションを操作の分かりやすさで評価 |
+| [google-agents-cli-eval](google-agents-cli-eval/SKILL.md) | AIエージェントの回答・ツール選択・根拠を分けて評価 |
+| [just](just/SKILL.md) | justfile内のビルドやテストのレシピを確認 |
+| [cypress-explain](cypress-explain/SKILL.md) | 既存のCypressテストが保証することと抜けを説明 |
+
+## スレッドから選んだ10種類（2026-11-27追加）
+
+既存スキルと役割が重なりすぎないように、SRE・コンテナ、UI・テスト、エージェント評価、日常の開発作業を補う10件を選びました。順位ではなく実務での用途と再配布条件を基準にしています。
+
+| スキル | 提供元 | ライセンス | 固定コミット・収録内容 |
+| --- | --- | --- | --- |
+| promql | [grafana/skills](https://github.com/grafana/skills) | Apache-2.0 | [取得記録](promql/UPSTREAM.md) |
+| docker-build-strategies | [docker/skills](https://github.com/docker/skills) | Apache-2.0 | [取得記録](docker-build-strategies/UPSTREAM.md) |
+| workers-profiling | [cloudflare/skills](https://github.com/cloudflare/skills) | Apache-2.0 | [取得記録](workers-profiling/UPSTREAM.md) |
+| a11y-debugging | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) | Apache-2.0 | [取得記録](a11y-debugging/UPSTREAM.md) |
+| debug-optimize-lcp | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) | Apache-2.0 | [取得記録](debug-optimize-lcp/UPSTREAM.md) |
+| break-ui | [emilkowalski/skills](https://github.com/emilkowalski/skills) | MIT | [取得記録](break-ui/UPSTREAM.md) |
+| ux-heuristics | [wondelai/skills](https://github.com/wondelai/skills) | MIT | [取得記録](ux-heuristics/UPSTREAM.md) |
+| google-agents-cli-eval | [google/agents-cli](https://github.com/google/agents-cli) | Apache-2.0 | [取得記録](google-agents-cli-eval/UPSTREAM.md) |
+| just | [casey/just](https://github.com/casey/just) | CC0-1.0 | [取得記録](just/UPSTREAM.md) |
+| cypress-explain | [cypress-io/ai-toolkit](https://github.com/cypress-io/ai-toolkit) | MIT | [取得記録](cypress-explain/UPSTREAM.md) |
+
+追加はリポジトリへの収録のみです。クライアントへの導入、付属コードの実行、外部アカウント接続は行っていません。[確認範囲](tests/slack-curation-validation.md)
 
 ## 上流から選んだ5種類（2026-10-17追加）
 

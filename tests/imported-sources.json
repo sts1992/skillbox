@@ -1,6 +1,6 @@
 {
   "description": "無変更で同梱した上流ファイルのGit blob SHA-1。翻訳・追記ファイルはこの照合対象に含めない。",
-  "checked_at": "2026-10-17",
+  "checked_at": "2026-11-27",
   "skills": {
     "systematic-debugging": {
       "repository": "obra/superpowers",
@@ -26,270 +26,320 @@
       "repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff",
       "path": "skills/yomiyasu"
+    },
+    "promql": {
+      "repository": "grafana/skills",
+      "commit": "8fb72a527961f05e708f53d2a0500709e12d7970",
+      "path": "skills/grafana-core/promql"
+    },
+    "docker-build-strategies": {
+      "repository": "docker/skills",
+      "commit": "fbcef37a595f1e0cc992524e31360b25f936706f",
+      "path": "skills/docker-build-strategies"
+    },
+    "workers-profiling": {
+      "repository": "cloudflare/skills",
+      "commit": "ff191de7d903788eceaf516a514ae7d3b56b924a",
+      "path": "skills/workers-profiling"
+    },
+    "a11y-debugging": {
+      "repository": "ChromeDevTools/chrome-devtools-mcp",
+      "commit": "597b029dc9f1c1bbb48b71dc3d8abf25efec6f8c",
+      "path": "skills/a11y-debugging"
+    },
+    "debug-optimize-lcp": {
+      "repository": "ChromeDevTools/chrome-devtools-mcp",
+      "commit": "597b029dc9f1c1bbb48b71dc3d8abf25efec6f8c",
+      "path": "skills/debug-optimize-lcp"
+    },
+    "break-ui": {
+      "repository": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "path": "skills/break-ui"
+    },
+    "ux-heuristics": {
+      "repository": "wondelai/skills",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe",
+      "path": "ux-heuristics"
+    },
+    "google-agents-cli-eval": {
+      "repository": "google/agents-cli",
+      "commit": "ea7a3c9003d11514c5ba5a46a7ceaffb333e5b76",
+      "path": "skills/google-agents-cli-eval"
+    },
+    "just": {
+      "repository": "casey/just",
+      "commit": "62784c2a6e169b8ca5f32bd69d5cfeb1d6b5e1fe",
+      "path": "skills/just"
+    },
+    "cypress-explain": {
+      "repository": "cypress-io/ai-toolkit",
+      "commit": "9696164bfb033a2119f751688e5c5d76ab862da7",
+      "path": "skills/cypress-explain"
     }
   },
   "files": [
     {
-      "local_path": "/workspace/shared/skillbox-additions/review-pr/LICENSE",
+      "local_path": "review-pr/LICENSE",
       "upstream_path": "LICENSE",
       "blob_sha": "00bd0da9b68ad483740275a0ec22a864ba8565fc",
       "upstream_repository": "warpdotdev/common-skills",
       "commit": "7c4eb852de8d7c3e68c81802e1c59db9a611f914"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/review-pr/scripts/resolve_spec_context.py",
+      "local_path": "review-pr/scripts/resolve_spec_context.py",
       "upstream_path": ".agents/skills/review-pr/scripts/resolve_spec_context.py",
       "blob_sha": "6c918aadf6c902d8b0b0584226757966046a2dfd",
       "upstream_repository": "warpdotdev/common-skills",
       "commit": "7c4eb852de8d7c3e68c81802e1c59db9a611f914"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/review-pr/scripts/validate_review_json.py",
+      "local_path": "review-pr/scripts/validate_review_json.py",
       "upstream_path": ".agents/skills/review-pr/scripts/validate_review_json.py",
       "blob_sha": "85333e80a750199f5dc2e83d876e32a5212b3944",
       "upstream_repository": "warpdotdev/common-skills",
       "commit": "7c4eb852de8d7c3e68c81802e1c59db9a611f914"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/LICENSE",
+      "local_path": "yomiyasu/LICENSE",
       "upstream_path": "skills/yomiyasu/LICENSE",
       "blob_sha": "f0d06f87f9b209d47c7f7963321ff71bab68c1e8",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/UNICODE-LICENSE.txt",
+      "local_path": "yomiyasu/UNICODE-LICENSE.txt",
       "upstream_path": "skills/yomiyasu/UNICODE-LICENSE.txt",
       "blob_sha": "56da58912807030b451a4700687d5bd02c72d6ed",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/audience.md",
+      "local_path": "yomiyasu/references/audience.md",
       "upstream_path": "skills/yomiyasu/references/audience.md",
       "blob_sha": "c9e4004bf226f61680cc9d17387ecf9ec7542b0c",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/doc-types/article.md",
+      "local_path": "yomiyasu/references/doc-types/article.md",
       "upstream_path": "skills/yomiyasu/references/doc-types/article.md",
       "blob_sha": "5555ad6fac4139c443c30bcc71bd31b90b126787",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/doc-types/essay.md",
+      "local_path": "yomiyasu/references/doc-types/essay.md",
       "upstream_path": "skills/yomiyasu/references/doc-types/essay.md",
       "blob_sha": "7e6ee762ab3b991b599299e5602491d75dee5aaf",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/doc-types/formal.md",
+      "local_path": "yomiyasu/references/doc-types/formal.md",
       "upstream_path": "skills/yomiyasu/references/doc-types/formal.md",
       "blob_sha": "c2ed7aa505cf4e26fb6cedcf83c380b62312a32a",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/doc-types/incident.md",
+      "local_path": "yomiyasu/references/doc-types/incident.md",
       "upstream_path": "skills/yomiyasu/references/doc-types/incident.md",
       "blob_sha": "287165f83caa12e08065a187d9c5754a91aee3c5",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/doc-types/mail.md",
+      "local_path": "yomiyasu/references/doc-types/mail.md",
       "upstream_path": "skills/yomiyasu/references/doc-types/mail.md",
       "blob_sha": "6f6300df44e8203b5764f67ab07106b3726200ea",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/doc-types/manual.md",
+      "local_path": "yomiyasu/references/doc-types/manual.md",
       "upstream_path": "skills/yomiyasu/references/doc-types/manual.md",
       "blob_sha": "72685c6d34b023e3d22a7814ef360c20a2e7fd32",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/doc-types/minutes.md",
+      "local_path": "yomiyasu/references/doc-types/minutes.md",
       "upstream_path": "skills/yomiyasu/references/doc-types/minutes.md",
       "blob_sha": "0e21a3edb43c7b3ecc1c613d1a6294322570e093",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/doc-types/paper.md",
+      "local_path": "yomiyasu/references/doc-types/paper.md",
       "upstream_path": "skills/yomiyasu/references/doc-types/paper.md",
       "blob_sha": "adffd64ac057608444d149e060e863219cb2c15c",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/doc-types/pr.md",
+      "local_path": "yomiyasu/references/doc-types/pr.md",
       "upstream_path": "skills/yomiyasu/references/doc-types/pr.md",
       "blob_sha": "a49dccda870f97f8e2bbf3b437c1b5910f8fe00b",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/doc-types/promo.md",
+      "local_path": "yomiyasu/references/doc-types/promo.md",
       "upstream_path": "skills/yomiyasu/references/doc-types/promo.md",
       "blob_sha": "8dd8f778be6c693d166bc3ed564998ad9790e48a",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/doc-types/proposal.md",
+      "local_path": "yomiyasu/references/doc-types/proposal.md",
       "upstream_path": "skills/yomiyasu/references/doc-types/proposal.md",
       "blob_sha": "cc03100c37ec983afc3cdc69cb48223a39c28fe2",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/doc-types/slides.md",
+      "local_path": "yomiyasu/references/doc-types/slides.md",
       "upstream_path": "skills/yomiyasu/references/doc-types/slides.md",
       "blob_sha": "5c3f9cad2093c5a33a9df44d8f0334ad555aa703",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/domains/business.md",
+      "local_path": "yomiyasu/references/domains/business.md",
       "upstream_path": "skills/yomiyasu/references/domains/business.md",
       "blob_sha": "fda8c9dcd1049df62594b09842b2bc936baf6d0b",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/domains/essay.md",
+      "local_path": "yomiyasu/references/domains/essay.md",
       "upstream_path": "skills/yomiyasu/references/domains/essay.md",
       "blob_sha": "1450f9fec4a986eb8fc734853d997addbeef0976",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/domains/tech.md",
+      "local_path": "yomiyasu/references/domains/tech.md",
       "upstream_path": "skills/yomiyasu/references/domains/tech.md",
       "blob_sha": "49f36b1a5916e56f8e2b973bee21656207ccf916",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/fact-recovery-details.md",
+      "local_path": "yomiyasu/references/fact-recovery-details.md",
       "upstream_path": "skills/yomiyasu/references/fact-recovery-details.md",
       "blob_sha": "77e5c445c5b2e3f87b60c636ec3d1f891d84fd67",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/fact-recovery.md",
+      "local_path": "yomiyasu/references/fact-recovery.md",
       "upstream_path": "skills/yomiyasu/references/fact-recovery.md",
       "blob_sha": "7e4a36792a0b858d54605de0e8b91d3ebf19b81d",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/gemini-syntax.md",
+      "local_path": "yomiyasu/references/gemini-syntax.md",
       "upstream_path": "skills/yomiyasu/references/gemini-syntax.md",
       "blob_sha": "5825bae34df02890602689e5d6058cf7ce3daf27",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/lists/fact-gaps.txt",
+      "local_path": "yomiyasu/references/lists/fact-gaps.txt",
       "upstream_path": "skills/yomiyasu/references/lists/fact-gaps.txt",
       "blob_sha": "30ad50259ec20cad225cd677b976544b6a8fa0c7",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/lists/feelings.txt",
+      "local_path": "yomiyasu/references/lists/feelings.txt",
       "upstream_path": "skills/yomiyasu/references/lists/feelings.txt",
       "blob_sha": "73a7f9b0a72238dc2223096bbe18bc1a3c99b177",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/lists/hedges.txt",
+      "local_path": "yomiyasu/references/lists/hedges.txt",
       "upstream_path": "skills/yomiyasu/references/lists/hedges.txt",
       "blob_sha": "2a20cefc2886ce03116eef8743d84b62523e911e",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/lists/intensifiers.txt",
+      "local_path": "yomiyasu/references/lists/intensifiers.txt",
       "upstream_path": "skills/yomiyasu/references/lists/intensifiers.txt",
       "blob_sha": "7594085d2951a125a392b766ed50c6a95da8fe58",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/lists/nominalization.txt",
+      "local_path": "yomiyasu/references/lists/nominalization.txt",
       "upstream_path": "skills/yomiyasu/references/lists/nominalization.txt",
       "blob_sha": "a2ecc4169e1aa267388a40c7d68bc3131cc56b74",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/persona.md",
+      "local_path": "yomiyasu/references/persona.md",
       "upstream_path": "skills/yomiyasu/references/persona.md",
       "blob_sha": "390dbd8db6f94fd3413a2677d66d27ce89f4eb40",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/rephrase-test.md",
+      "local_path": "yomiyasu/references/rephrase-test.md",
       "upstream_path": "skills/yomiyasu/references/rephrase-test.md",
       "blob_sha": "bc84913bedc141e32edada970b8b07f50479195b",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/review-points.md",
+      "local_path": "yomiyasu/references/review-points.md",
       "upstream_path": "skills/yomiyasu/references/review-points.md",
       "blob_sha": "05e8f206eb441f6da21f22b5a67a5e4f789f7249",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/references/slop-catalog.md",
+      "local_path": "yomiyasu/references/slop-catalog.md",
       "upstream_path": "skills/yomiyasu/references/slop-catalog.md",
       "blob_sha": "d2519770231c4ad21819012f795a7d760f332dfe",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/scripts/markdown_visibility.py",
+      "local_path": "yomiyasu/scripts/markdown_visibility.py",
       "upstream_path": "skills/yomiyasu/scripts/markdown_visibility.py",
       "blob_sha": "0e85b119b2a8231e23a0fa0c5e8a68a68b1fc40b",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/scripts/yomiyasu_check.py",
+      "local_path": "yomiyasu/scripts/yomiyasu_check.py",
       "upstream_path": "skills/yomiyasu/scripts/yomiyasu_check.py",
       "blob_sha": "9f86185324f92315e763d9f98fc39971c9028555",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/scripts/yomiyasu_diff.py",
+      "local_path": "yomiyasu/scripts/yomiyasu_diff.py",
       "upstream_path": "skills/yomiyasu/scripts/yomiyasu_diff.py",
       "blob_sha": "fa07c690a0bed1511ffd88acb5bbe5737dba51cb",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/scripts/yomiyasu_hook.py",
+      "local_path": "yomiyasu/scripts/yomiyasu_hook.py",
       "upstream_path": "skills/yomiyasu/scripts/yomiyasu_hook.py",
       "blob_sha": "b84dd7aa12e8a90caaac4b6cc9f15538e078e7af",
       "upstream_repository": "nanaism/yomiyasu",
       "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
     },
     {
-      "local_path": "/workspace/shared/skillbox-additions/yomiyasu/scripts/yomiyasu_lint.py",
+      "local_path": "yomiyasu/scripts/yomiyasu_lint.py",
       "upstream_path": "skills/yomiyasu/scripts/yomiyasu_lint.py",
       "blob_sha": "1ed31d3b200423872c3c539d30f250e694b49bde",
       "upstream_repository": "nanaism/yomiyasu",
@@ -349,6 +399,377 @@
       "local_path": "workers-best-practices/references/runtime-patterns.md",
       "upstream_path": "https://github.com/cloudflare/skills/blob/86505e44f87d801aa1864a3c4109e9a8ae5c409f/skills/workers-best-practices/references/runtime-patterns.md",
       "blob_sha": "bdb8c03882b6ecd658d91b3cd44a1b5203ddd3fc"
+    },
+    {
+      "local_path": "promql/LICENSE",
+      "upstream_path": "LICENSE",
+      "blob_sha": "43533e246a58af3a3c7840e5b6189ea8b95f8c6f",
+      "upstream_repository": "grafana/skills",
+      "commit": "8fb72a527961f05e708f53d2a0500709e12d7970"
+    },
+    {
+      "local_path": "promql/UPSTREAM-SKILL.md",
+      "upstream_path": "skills/grafana-core/promql/SKILL.md",
+      "blob_sha": "602c986977e2c23f000c2a1fa3555fcb21040f0d",
+      "upstream_repository": "grafana/skills",
+      "commit": "8fb72a527961f05e708f53d2a0500709e12d7970"
+    },
+    {
+      "local_path": "promql/references/patterns.md",
+      "upstream_path": "skills/grafana-core/promql/references/patterns.md",
+      "blob_sha": "19b5c7b25fd6cddacc4cde6407ae43bc88e85a06",
+      "upstream_repository": "grafana/skills",
+      "commit": "8fb72a527961f05e708f53d2a0500709e12d7970"
+    },
+    {
+      "local_path": "docker-build-strategies/LICENSE",
+      "upstream_path": "LICENSE",
+      "blob_sha": "34f4d2496fa7340441d0b70900bcae0646a0a643",
+      "upstream_repository": "docker/skills",
+      "commit": "fbcef37a595f1e0cc992524e31360b25f936706f"
+    },
+    {
+      "local_path": "docker-build-strategies/UPSTREAM-SKILL.md",
+      "upstream_path": "skills/docker-build-strategies/SKILL.md",
+      "blob_sha": "31892527582a736c05d0be76f1be93d3dc470aef",
+      "upstream_repository": "docker/skills",
+      "commit": "fbcef37a595f1e0cc992524e31360b25f936706f"
+    },
+    {
+      "local_path": "docker-build-strategies/assets/Dockerfile.go",
+      "upstream_path": "skills/docker-build-strategies/assets/Dockerfile.go",
+      "blob_sha": "c1686b91f368289d975be1ff664f865bc030d5a0",
+      "upstream_repository": "docker/skills",
+      "commit": "fbcef37a595f1e0cc992524e31360b25f936706f"
+    },
+    {
+      "local_path": "docker-build-strategies/assets/Dockerfile.nodejs",
+      "upstream_path": "skills/docker-build-strategies/assets/Dockerfile.nodejs",
+      "blob_sha": "6e011f19263e3bd6a9f289856d08ca832f17d497",
+      "upstream_repository": "docker/skills",
+      "commit": "fbcef37a595f1e0cc992524e31360b25f936706f"
+    },
+    {
+      "local_path": "docker-build-strategies/assets/Dockerfile.python",
+      "upstream_path": "skills/docker-build-strategies/assets/Dockerfile.python",
+      "blob_sha": "e9cd335bc5a7d74d016e51948bd57ab950dfb779",
+      "upstream_repository": "docker/skills",
+      "commit": "fbcef37a595f1e0cc992524e31360b25f936706f"
+    },
+    {
+      "local_path": "docker-build-strategies/assets/dockerignore-example",
+      "upstream_path": "skills/docker-build-strategies/assets/dockerignore-example",
+      "blob_sha": "3da34c58e24ffdd778d50e394cb4bcd71661b14a",
+      "upstream_repository": "docker/skills",
+      "commit": "fbcef37a595f1e0cc992524e31360b25f936706f"
+    },
+    {
+      "local_path": "docker-build-strategies/checks/verification.md",
+      "upstream_path": "skills/docker-build-strategies/checks/verification.md",
+      "blob_sha": "e895b173c639e811be834835970ac038ab9e04d3",
+      "upstream_repository": "docker/skills",
+      "commit": "fbcef37a595f1e0cc992524e31360b25f936706f"
+    },
+    {
+      "local_path": "docker-build-strategies/references/layer-caching.md",
+      "upstream_path": "skills/docker-build-strategies/references/layer-caching.md",
+      "blob_sha": "af06fb11d6163fbd58bd04151c5de87c69537328",
+      "upstream_repository": "docker/skills",
+      "commit": "fbcef37a595f1e0cc992524e31360b25f936706f"
+    },
+    {
+      "local_path": "docker-build-strategies/references/multi-stage-builds.md",
+      "upstream_path": "skills/docker-build-strategies/references/multi-stage-builds.md",
+      "blob_sha": "6048d6fd40bbc230337ae900115b283ecc592a46",
+      "upstream_repository": "docker/skills",
+      "commit": "fbcef37a595f1e0cc992524e31360b25f936706f"
+    },
+    {
+      "local_path": "docker-build-strategies/scripts/verify-build.sh",
+      "upstream_path": "skills/docker-build-strategies/scripts/verify-build.sh",
+      "blob_sha": "090fe1a5e57819e826767baa360c229ad5351775",
+      "upstream_repository": "docker/skills",
+      "commit": "fbcef37a595f1e0cc992524e31360b25f936706f"
+    },
+    {
+      "local_path": "workers-profiling/LICENSE",
+      "upstream_path": "LICENSE",
+      "blob_sha": "7a4a3ea2424c09fbe48d455aed1eaa94d9124835",
+      "upstream_repository": "cloudflare/skills",
+      "commit": "ff191de7d903788eceaf516a514ae7d3b56b924a"
+    },
+    {
+      "local_path": "workers-profiling/UPSTREAM-SKILL.md",
+      "upstream_path": "skills/workers-profiling/SKILL.md",
+      "blob_sha": "792be905e836a3a892200f2c9f5a3ecbdc710314",
+      "upstream_repository": "cloudflare/skills",
+      "commit": "ff191de7d903788eceaf516a514ae7d3b56b924a"
+    },
+    {
+      "local_path": "workers-profiling/references/skill-feedback.md",
+      "upstream_path": "skills/workers-profiling/references/skill-feedback.md",
+      "blob_sha": "15301770c620d75b9f917c28dd257c7b1b0c7a7d",
+      "upstream_repository": "cloudflare/skills",
+      "commit": "ff191de7d903788eceaf516a514ae7d3b56b924a"
+    },
+    {
+      "local_path": "a11y-debugging/LICENSE",
+      "upstream_path": "LICENSE",
+      "blob_sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "upstream_repository": "ChromeDevTools/chrome-devtools-mcp",
+      "commit": "597b029dc9f1c1bbb48b71dc3d8abf25efec6f8c"
+    },
+    {
+      "local_path": "a11y-debugging/UPSTREAM-SKILL.md",
+      "upstream_path": "skills/a11y-debugging/SKILL.md",
+      "blob_sha": "d6b2413b7aa090c8a5c605982456811767a3c622",
+      "upstream_repository": "ChromeDevTools/chrome-devtools-mcp",
+      "commit": "597b029dc9f1c1bbb48b71dc3d8abf25efec6f8c"
+    },
+    {
+      "local_path": "a11y-debugging/references/a11y-snippets.md",
+      "upstream_path": "skills/a11y-debugging/references/a11y-snippets.md",
+      "blob_sha": "87fbf0cd12d28c035dcbee7e004224ca1d82ebfa",
+      "upstream_repository": "ChromeDevTools/chrome-devtools-mcp",
+      "commit": "597b029dc9f1c1bbb48b71dc3d8abf25efec6f8c"
+    },
+    {
+      "local_path": "debug-optimize-lcp/LICENSE",
+      "upstream_path": "LICENSE",
+      "blob_sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "upstream_repository": "ChromeDevTools/chrome-devtools-mcp",
+      "commit": "597b029dc9f1c1bbb48b71dc3d8abf25efec6f8c"
+    },
+    {
+      "local_path": "debug-optimize-lcp/UPSTREAM-SKILL.md",
+      "upstream_path": "skills/debug-optimize-lcp/SKILL.md",
+      "blob_sha": "89b48b64b0352c850e64c8db7cdfbd3527361f54",
+      "upstream_repository": "ChromeDevTools/chrome-devtools-mcp",
+      "commit": "597b029dc9f1c1bbb48b71dc3d8abf25efec6f8c"
+    },
+    {
+      "local_path": "debug-optimize-lcp/references/elements-and-size.md",
+      "upstream_path": "skills/debug-optimize-lcp/references/elements-and-size.md",
+      "blob_sha": "a75fc729c1f4f131c5b6606c420c0ade95068c9e",
+      "upstream_repository": "ChromeDevTools/chrome-devtools-mcp",
+      "commit": "597b029dc9f1c1bbb48b71dc3d8abf25efec6f8c"
+    },
+    {
+      "local_path": "debug-optimize-lcp/references/lcp-breakdown.md",
+      "upstream_path": "skills/debug-optimize-lcp/references/lcp-breakdown.md",
+      "blob_sha": "6194cda51d2dfbe386cb70a40e97d2df910b8720",
+      "upstream_repository": "ChromeDevTools/chrome-devtools-mcp",
+      "commit": "597b029dc9f1c1bbb48b71dc3d8abf25efec6f8c"
+    },
+    {
+      "local_path": "debug-optimize-lcp/references/lcp-snippets.md",
+      "upstream_path": "skills/debug-optimize-lcp/references/lcp-snippets.md",
+      "blob_sha": "343776d720d1019497f5fdec3e3d295112de3b6f",
+      "upstream_repository": "ChromeDevTools/chrome-devtools-mcp",
+      "commit": "597b029dc9f1c1bbb48b71dc3d8abf25efec6f8c"
+    },
+    {
+      "local_path": "debug-optimize-lcp/references/optimization-strategies.md",
+      "upstream_path": "skills/debug-optimize-lcp/references/optimization-strategies.md",
+      "blob_sha": "e96e00bccd5f5cf0aabf5d747f10ffabcbd65887",
+      "upstream_repository": "ChromeDevTools/chrome-devtools-mcp",
+      "commit": "597b029dc9f1c1bbb48b71dc3d8abf25efec6f8c"
+    },
+    {
+      "local_path": "break-ui/LICENSE",
+      "upstream_path": "LICENSE",
+      "blob_sha": "57b46f1fd11dc62351ea548104a88aa3f659c11b",
+      "upstream_repository": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c"
+    },
+    {
+      "local_path": "break-ui/CATALOG.md",
+      "upstream_path": "skills/break-ui/CATALOG.md",
+      "blob_sha": "40e348ba2c469cb8e36768223e4b1c0dd135e4fd",
+      "upstream_repository": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c"
+    },
+    {
+      "local_path": "break-ui/UPSTREAM-SKILL.md",
+      "upstream_path": "skills/break-ui/SKILL.md",
+      "blob_sha": "52be42ffb02f252e889b8ac3a45b97d9f7a0c36c",
+      "upstream_repository": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c"
+    },
+    {
+      "local_path": "ux-heuristics/LICENSE",
+      "upstream_path": "LICENSE",
+      "blob_sha": "9b62238504f0feb80cf3b390f181cef476c60d9e",
+      "upstream_repository": "wondelai/skills",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
+    },
+    {
+      "local_path": "ux-heuristics/UPSTREAM-SKILL.md",
+      "upstream_path": "ux-heuristics/SKILL.md",
+      "blob_sha": "63e6db1c88ba20d7e5ef7391d266ef6b3019a3b0",
+      "upstream_repository": "wondelai/skills",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
+    },
+    {
+      "local_path": "ux-heuristics/references/audit-template.md",
+      "upstream_path": "ux-heuristics/references/audit-template.md",
+      "blob_sha": "da9529967e4c6f3b78ad06dfec5c54e560f3ed6f",
+      "upstream_repository": "wondelai/skills",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
+    },
+    {
+      "local_path": "ux-heuristics/references/cultural-ux.md",
+      "upstream_path": "ux-heuristics/references/cultural-ux.md",
+      "blob_sha": "c729285f8add8b9edb06f353406d187aa3194131",
+      "upstream_repository": "wondelai/skills",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
+    },
+    {
+      "local_path": "ux-heuristics/references/dark-patterns.md",
+      "upstream_path": "ux-heuristics/references/dark-patterns.md",
+      "blob_sha": "2be59e70b67573ad25d73b0f77cf4b013191c5b5",
+      "upstream_repository": "wondelai/skills",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
+    },
+    {
+      "local_path": "ux-heuristics/references/heuristic-conflicts.md",
+      "upstream_path": "ux-heuristics/references/heuristic-conflicts.md",
+      "blob_sha": "d8e58fc7b8e196b6a4f83d18c2ac08288c26576b",
+      "upstream_repository": "wondelai/skills",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
+    },
+    {
+      "local_path": "ux-heuristics/references/krug-principles.md",
+      "upstream_path": "ux-heuristics/references/krug-principles.md",
+      "blob_sha": "c27ba7c02bbbbf55387b7f2577c35742f5f8227c",
+      "upstream_repository": "wondelai/skills",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
+    },
+    {
+      "local_path": "ux-heuristics/references/nielsen-heuristics.md",
+      "upstream_path": "ux-heuristics/references/nielsen-heuristics.md",
+      "blob_sha": "749a4bb9f3b5b2305b08cbc79a474af85a7b290d",
+      "upstream_repository": "wondelai/skills",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
+    },
+    {
+      "local_path": "ux-heuristics/references/wcag-checklist.md",
+      "upstream_path": "ux-heuristics/references/wcag-checklist.md",
+      "blob_sha": "79860e6f74b08bd6b685aaff509a2e24c6fe1754",
+      "upstream_repository": "wondelai/skills",
+      "commit": "c37678106e63ef1c5472d848fb3d8b8c5b33fafe"
+    },
+    {
+      "local_path": "google-agents-cli-eval/LICENSE",
+      "upstream_path": "LICENSE",
+      "blob_sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "upstream_repository": "google/agents-cli",
+      "commit": "ea7a3c9003d11514c5ba5a46a7ceaffb333e5b76"
+    },
+    {
+      "local_path": "google-agents-cli-eval/UPSTREAM-SKILL.md",
+      "upstream_path": "skills/google-agents-cli-eval/SKILL.md",
+      "blob_sha": "b2d7657479a64545b5c5fd1845d121f1e3043aba",
+      "upstream_repository": "google/agents-cli",
+      "commit": "ea7a3c9003d11514c5ba5a46a7ceaffb333e5b76"
+    },
+    {
+      "local_path": "google-agents-cli-eval/references/advanced-commands.md",
+      "upstream_path": "skills/google-agents-cli-eval/references/advanced-commands.md",
+      "blob_sha": "8d68d9826cbf316b959a6c82d3705d00ce153f8b",
+      "upstream_repository": "google/agents-cli",
+      "commit": "ea7a3c9003d11514c5ba5a46a7ceaffb333e5b76"
+    },
+    {
+      "local_path": "google-agents-cli-eval/references/builtin-tools-eval.md",
+      "upstream_path": "skills/google-agents-cli-eval/references/builtin-tools-eval.md",
+      "blob_sha": "2f6364101d19fa106b92068d733caed71676476d",
+      "upstream_repository": "google/agents-cli",
+      "commit": "ea7a3c9003d11514c5ba5a46a7ceaffb333e5b76"
+    },
+    {
+      "local_path": "google-agents-cli-eval/references/dataset_schema.md",
+      "upstream_path": "skills/google-agents-cli-eval/references/dataset_schema.md",
+      "blob_sha": "4572c29620c9dd43e13320ea06c543850332d945",
+      "upstream_repository": "google/agents-cli",
+      "commit": "ea7a3c9003d11514c5ba5a46a7ceaffb333e5b76"
+    },
+    {
+      "local_path": "google-agents-cli-eval/references/live-eval.md",
+      "upstream_path": "skills/google-agents-cli-eval/references/live-eval.md",
+      "blob_sha": "8b48664c51a6c445501900eed68dc0fedbc2726f",
+      "upstream_repository": "google/agents-cli",
+      "commit": "ea7a3c9003d11514c5ba5a46a7ceaffb333e5b76"
+    },
+    {
+      "local_path": "google-agents-cli-eval/references/metrics-guide.md",
+      "upstream_path": "skills/google-agents-cli-eval/references/metrics-guide.md",
+      "blob_sha": "de3a59ff96fd64f6bb2fdb21f30ecb881ae6bb56",
+      "upstream_repository": "google/agents-cli",
+      "commit": "ea7a3c9003d11514c5ba5a46a7ceaffb333e5b76"
+    },
+    {
+      "local_path": "google-agents-cli-eval/references/multimodal-eval.md",
+      "upstream_path": "skills/google-agents-cli-eval/references/multimodal-eval.md",
+      "blob_sha": "b71f6eda287e6da78755792150da71b05426581f",
+      "upstream_repository": "google/agents-cli",
+      "commit": "ea7a3c9003d11514c5ba5a46a7ceaffb333e5b76"
+    },
+    {
+      "local_path": "google-agents-cli-eval/references/user-simulation.md",
+      "upstream_path": "skills/google-agents-cli-eval/references/user-simulation.md",
+      "blob_sha": "1eb03caf12642e625ece7dd978d17f3e123be1b0",
+      "upstream_repository": "google/agents-cli",
+      "commit": "ea7a3c9003d11514c5ba5a46a7ceaffb333e5b76"
+    },
+    {
+      "local_path": "just/LICENSE",
+      "upstream_path": "LICENSE",
+      "blob_sha": "0e259d42c996742e9e3cba14c677129b2c1b6311",
+      "upstream_repository": "casey/just",
+      "commit": "62784c2a6e169b8ca5f32bd69d5cfeb1d6b5e1fe"
+    },
+    {
+      "local_path": "just/UPSTREAM-SKILL.md",
+      "upstream_path": "skills/just/SKILL.md",
+      "blob_sha": "46d0e6aab5481b0a2978c37cac32f55a279ed9c8",
+      "upstream_repository": "casey/just",
+      "commit": "62784c2a6e169b8ca5f32bd69d5cfeb1d6b5e1fe"
+    },
+    {
+      "local_path": "cypress-explain/LICENSE",
+      "upstream_path": "LICENSE",
+      "blob_sha": "fc768fd553b44b953cd35169db9f1803004a678e",
+      "upstream_repository": "cypress-io/ai-toolkit",
+      "commit": "9696164bfb033a2119f751688e5c5d76ab862da7"
+    },
+    {
+      "local_path": "cypress-explain/UPSTREAM-SKILL.md",
+      "upstream_path": "skills/cypress-explain/SKILL.md",
+      "blob_sha": "986d98f4b6b6848b26d6c2919657b2f38f763063",
+      "upstream_repository": "cypress-io/ai-toolkit",
+      "commit": "9696164bfb033a2119f751688e5c5d76ab862da7"
+    },
+    {
+      "local_path": "cypress-explain/references/documentation/documentation-rules.md",
+      "upstream_path": "skills/cypress-explain/references/documentation/documentation-rules.md",
+      "blob_sha": "aee6e63bfff2303a1dadd26c436deb3458553835",
+      "upstream_repository": "cypress-io/ai-toolkit",
+      "commit": "9696164bfb033a2119f751688e5c5d76ab862da7"
+    },
+    {
+      "local_path": "cypress-explain/references/explain/explain-cypress-rules.md",
+      "upstream_path": "skills/cypress-explain/references/explain/explain-cypress-rules.md",
+      "blob_sha": "b569ae944a1f038f8dd2443315df8dfc78d46469",
+      "upstream_repository": "cypress-io/ai-toolkit",
+      "commit": "9696164bfb033a2119f751688e5c5d76ab862da7"
+    },
+    {
+      "local_path": "cypress-explain/references/explain/explain-test-rules.md",
+      "upstream_path": "skills/cypress-explain/references/explain/explain-test-rules.md",
+      "blob_sha": "ee45f1a79a23e8419992a8d2b6469973de82dee8",
+      "upstream_repository": "cypress-io/ai-toolkit",
+      "commit": "9696164bfb033a2119f751688e5c5d76ab862da7"
     }
   ]
 }
