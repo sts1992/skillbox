@@ -1,6 +1,6 @@
 ---
 name: a11y-debugging
-description: アクセシビリティツリーとキーボード操作でUIを点検ときに使用する。
+description: アクセシビリティツリーとキーボード操作でUIを点検するときに使用する。
 license: Apache-2.0
 ---
 

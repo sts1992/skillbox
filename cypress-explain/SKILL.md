@@ -1,6 +1,6 @@
 ---
 name: cypress-explain
-description: 既存のCypressテストが保証することと抜けを説明ときに使用する。
+description: 既存のCypressテストが保証することと抜けを説明するときに使用する。
 license: MIT
 ---
 

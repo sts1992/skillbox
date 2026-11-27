@@ -1,6 +1,6 @@
 ---
 name: workers-profiling
-description: Cloudflare WorkersのCPU・メモリ所要量をプロファイルから分析ときに使用する。
+description: Cloudflare WorkersのCPU・メモリ所要量をプロファイルから分析するときに使用する。
 license: Apache-2.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: debug-optimize-lcp
-description: 画面の主要コンテンツ表示が遅い原因をLCP計測から特定ときに使用する。
+description: 画面の主要コンテンツ表示が遅い原因をLCP計測から特定するときに使用する。
 license: Apache-2.0
 ---
 

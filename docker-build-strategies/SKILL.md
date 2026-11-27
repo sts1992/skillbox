@@ -1,6 +1,6 @@
 ---
 name: docker-build-strategies
-description: Dockerfileのマルチステージ化、キャッシュ、非root実行を点検ときに使用する。
+description: Dockerfileのマルチステージ化、キャッシュ、非root実行を点検するときに使用する。
 license: Apache-2.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: break-ui
-description: 長い文字列・欠損・空データでUIの表示崩れを検証ときに使用する。
+description: 長い文字列・欠損・空データでUIの表示崩れを検証するときに使用する。
 license: MIT
 ---
 

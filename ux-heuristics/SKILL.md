@@ -1,6 +1,6 @@
 ---
 name: ux-heuristics
-description: フォームやナビゲーションを操作の分かりやすさで評価ときに使用する。
+description: フォームやナビゲーションを操作の分かりやすさで評価するときに使用する。
 license: MIT
 ---
 

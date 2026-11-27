@@ -1,6 +1,6 @@
 ---
 name: promql
-description: PromQLのエラー率・レイテンシ・SLO・カーディナリティを点検ときに使用する。
+description: PromQLのエラー率・レイテンシ・SLO・カーディナリティを点検するときに使用する。
 license: Apache-2.0
 ---
 

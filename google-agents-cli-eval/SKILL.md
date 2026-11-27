@@ -1,6 +1,6 @@
 ---
 name: google-agents-cli-eval
-description: AIエージェントの回答・ツール選択・根拠を分けて評価ときに使用する。
+description: AIエージェントの回答・ツール選択・根拠を分けて評価するときに使用する。
 license: Apache-2.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: just
-description: justfile内のビルドやテストのレシピを確認ときに使用する。
+description: justfile内のビルドやテストのレシピを確認するときに使用する。
 license: CC0-1.0
 ---
 
