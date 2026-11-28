@@ -22,6 +22,16 @@ EXPECTED = {
 IMPORTED = {
     'systematic-debugging', 'workers-best-practices',
     'benchmark-checklist', 'review-pr', 'yomiyasu',
+    'promql',
+    'docker-build-strategies',
+    'workers-profiling',
+    'a11y-debugging',
+    'debug-optimize-lcp',
+    'break-ui',
+    'ux-heuristics',
+    'google-agents-cli-eval',
+    'just',
+    'cypress-explain',
 }
 errors = []
 
@@ -85,7 +95,11 @@ if manifest_path.is_file():
     manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
     check(set(manifest['skills']) == IMPORTED, 'manifestのスキル一覧が不一致')
     for item in manifest['files']:
-        path = ROOT / item['local_path']
+        rel = Path(item['local_path'])
+        check(not rel.is_absolute() and '..' not in rel.parts, f'リポジトリ相対パスが必要: {rel}')
+        if rel.is_absolute() or '..' in rel.parts:
+            continue
+        path = ROOT / rel
         check(path.is_file(), f"上流ファイルがない: {item['local_path']}")
         if path.is_file():
             data = path.read_bytes()
