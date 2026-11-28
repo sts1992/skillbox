@@ -16,10 +16,36 @@ from typing import Any
 API_ROOT = "https://api.github.com"
 GRAPHQL_ROOT = f"{API_ROOT}/graphql"
 NO_SPEC_CONTEXT_MESSAGE = "No approved or repository spec context was found for this PR."
-REPO_ROOT = Path(
-    (os.environ.get("OZ_REPO_ROOT") or "").strip()
-    or Path(__file__).resolve().parents[4]
-)
+REQUEST_TIMEOUT_SECONDS = 20
+
+
+class _RejectRedirects(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+_API_OPENER = urllib.request.build_opener(_RejectRedirects())
+
+
+def _workspace_from_env() -> Path:
+    path = Path((os.environ.get("OZ_REPO_ROOT") or "").strip())
+    if not path.is_absolute() or not path.is_dir():
+        raise SystemExit("Set OZ_REPO_ROOT to an existing absolute repository path.")
+    return path.resolve(strict=True)
+
+
+def _repository_slug(value: str) -> tuple[str, str]:
+    match = re.fullmatch(r"([A-Za-z0-9-]+)/([A-Za-z0-9_.-]+)", value)
+    if not match or match[2] in {".", ".."}:
+        raise SystemExit("Invalid repository slug. Expected OWNER/REPO.")
+    return match[1], match[2]
+
+
+def _validated_api_url(url: str) -> str:
+    parsed = urllib.parse.urlsplit(url)
+    if parsed.scheme != "https" or parsed.netloc != "api.github.com" or parsed.fragment:
+        raise SystemExit("Refusing to send a request outside the GitHub HTTPS API.")
+    return url
 
 _CLOSING_ISSUES_QUERY = (
     "query($owner: String!, $name: String!, $number: Int!, $after: String) {"
@@ -109,26 +135,31 @@ def _gh_request(
     allow_http_error: bool = False,
 ) -> tuple[int, bytes, dict[str, str]]:
     url = path_or_url if path_or_url.startswith("https://") else f"{API_ROOT}{path_or_url}"
+    url = _validated_api_url(url)
     if params:
-        url = f"{url}?{urllib.parse.urlencode(params)}"
+        parts = urllib.parse.urlsplit(url)
+        query = "&".join(filter(None, (parts.query, urllib.parse.urlencode(params))))
+        url = parts._replace(query=query).geturl()
     request = urllib.request.Request(url, data=payload, method=method)  # noqa: S310
-    request.add_header("Authorization", f"Bearer {token}")
+    request.add_unredirected_header("Authorization", f"Bearer {token}")
     request.add_header("Accept", accept)
     request.add_header("X-GitHub-Api-Version", "2022-11-28")
     request.add_header("User-Agent", "oz-resolve-review-spec-context")
     if payload is not None:
         request.add_header("Content-Type", "application/json")
     try:
-        with urllib.request.urlopen(request) as response:  # noqa: S310
+        with _API_OPENER.open(request, timeout=REQUEST_TIMEOUT_SECONDS) as response:
             return response.status, response.read(), dict(response.headers)
     except urllib.error.HTTPError as exc:
-        body = exc.read() if exc.fp is not None else b""
-        if allow_http_error:
-            return exc.code, body, dict(exc.headers or {})
-        detail = body.decode("utf-8", errors="replace")[:500]
-        raise SystemExit(
-            f"GitHub API request failed ({exc.code}) for {path_or_url}: {detail}"
-        ) from exc
+        if 300 <= exc.code < 400:
+            exc.close()
+            raise SystemExit("GitHub API redirect refused. Verify the canonical repository slug.") from None
+        with exc:
+            if allow_http_error:
+                return exc.code, exc.read() if exc.fp is not None else b"", dict(exc.headers or {})
+        raise SystemExit(f"GitHub API request failed ({exc.code}).") from None
+    except (urllib.error.URLError, TimeoutError):
+        raise SystemExit("Could not reach the GitHub API.") from None
 
 
 def _gh_json(
@@ -161,8 +192,7 @@ def _parse_next_link(link_header: str) -> str | None:
         rel_part = segment[end + 1 :]
         if 'rel="next"' not in rel_part:
             continue
-        parsed = urllib.parse.urlparse(url)
-        return parsed.path + (f"?{parsed.query}" if parsed.query else "")
+        return _validated_api_url(url)
     return None
 
 
@@ -179,7 +209,12 @@ def _gh_paginated_json(
         f"{path}?{urllib.parse.urlencode(merged_params)}" if merged_params else path
     )
     items: list[Any] = []
+    visited: set[str] = set()
     while next_path:
+        key = next_path if next_path.startswith("https://") else f"{API_ROOT}{next_path}"
+        if key in visited:
+            raise SystemExit("GitHub API pagination repeated a page.")
+        visited.add(key)
         status, body, headers = _gh_request(next_path, token=token)
         if status != 200:
             raise SystemExit(f"GitHub API returned status {status} for {next_path}")
@@ -214,15 +249,23 @@ def parse_datetime(value: str) -> datetime:
 
 
 def read_local_spec_files(workspace: Path, issue_number: int) -> list[tuple[str, str]]:
+    workspace = workspace.resolve(strict=True)
     spec_dir_name = f"GH{issue_number}"
     spec_dir = workspace / "specs" / spec_dir_name
     results: list[tuple[str, str]] = []
     for name in ("product.md", "tech.md"):
         path = spec_dir / name
-        if path.exists():
-            results.append(
-                (f"specs/{spec_dir_name}/{name}", path.read_text(encoding="utf-8").strip())
-            )
+        try:
+            resolved = path.resolve(strict=True)
+        except FileNotFoundError:
+            continue
+        except (OSError, RuntimeError):
+            raise SystemExit("Could not safely resolve a local spec path.") from None
+        if resolved != path or not resolved.is_file():
+            raise SystemExit("Local spec must be a regular file in the review workspace; links are not allowed.")
+        results.append(
+            (f"specs/{spec_dir_name}/{name}", resolved.read_text(encoding="utf-8").strip())
+        )
     return results
 
 
@@ -604,7 +647,7 @@ def resolve_spec_context_for_issue(
 ) -> dict[str, Any]:
     approved, unapproved = find_matching_spec_prs(owner, repo, issue_number, token=token)
     selected = approved[0] if approved else None
-    local_specs = read_local_spec_files(workspace, issue_number)
+    local_specs = [] if selected else read_local_spec_files(workspace, issue_number)
     if selected and selected["head_repo_full_name"] != f"{owner}/{repo}":
         raise RuntimeError(
             f"Linked approved spec PR #{selected['number']} uses branch "
@@ -704,16 +747,15 @@ def _format_spec_context(spec_context: dict[str, object]) -> str:
 
 def main() -> None:
     args = _parse_args()
-    if "/" not in args.repo:
-        raise SystemExit(
-            f"Invalid repository slug: {args.repo!r}. Expected OWNER/REPO."
-        )
-    owner, repo = args.repo.split("/", 1)
+    owner, repo = _repository_slug(args.repo)
+    if args.pr <= 0:
+        raise SystemExit("PR number must be positive.")
+    workspace = _workspace_from_env()
     spec_context = resolve_spec_context_for_pr(
         owner,
         repo,
         args.pr,
-        workspace=REPO_ROOT,
+        workspace=workspace,
         token=_resolve_token(),
     )
     print(_format_spec_context(spec_context))

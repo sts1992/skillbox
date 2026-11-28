@@ -4,8 +4,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {createRequire} from 'node:module';
 import {pathToFileURL} from 'node:url';
+import {resolveLocalImage} from './local_image_path.mjs';
 const [input,output,...flags]=process.argv.slice(2);
 if(!input||!output) throw new Error('Usage: build_pptx.mjs reviewed-layout.json output.pptx [--draft]');
+if(path.extname(output).toLowerCase()!=='.pptx') throw new Error('Output must have a .pptx extension.');
 const modules=process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES;
 if(!modules || !path.isAbsolute(modules)) throw new Error('Set CODEX_PRIMARY_RUNTIME_NODE_MODULES to the supplied artifact-tool runtime. Do not install an unofficial substitute.');
 const req=createRequire(path.join(modules,'resolver.cjs'));
@@ -14,7 +16,7 @@ const doc=JSON.parse(await fs.readFile(input,'utf8'));
 if(doc.schemaVersion!==1||doc.units!=='px'||!doc.slides?.length) throw new Error('Unsupported/empty layout');
 const size={width:doc.slides[0].width,height:doc.slides[0].height};
 const p=Presentation.create({slideSize:size});
-const root=path.dirname(path.resolve(input));const out=path.resolve(output);await fs.mkdir(path.dirname(out),{recursive:true});
+const root=path.dirname(await fs.realpath(input));const out=path.resolve(output);
 const report={draft:flags.includes('--draft'),slides:[],fontMap:doc.fontMap??{},source:doc.source,sourceSha256:doc.sourceSha256};
 const numeric=(v)=>typeof v==='number'&&Number.isFinite(v);
 for(const [i,s] of doc.slides.entries()){
@@ -57,8 +59,7 @@ for(const [i,s] of doc.slides.entries()){
   }else if(e.type==='image'){
    if(!e.rasterReason)throw new Error(`Image ${e.id} must say why it remains raster`);
    if(e.w*e.h/(size.width*size.height)>.8)throw new Error(`Image ${e.id} covers almost the whole slide. Whole-slide screenshots are not editable reconstruction.`);
-   const f=path.resolve(root,e.path);const ext=path.extname(f).toLowerCase();
-   if(!['.png','.jpg','.jpeg'].includes(ext))throw new Error('Crop images to PNG/JPEG before building');
+   const f=await resolveLocalImage(root,e.path);const ext=path.extname(f).toLowerCase();
    obj=slide.images.add({blob:new Uint8Array(await fs.readFile(f)),contentType:ext==='.png'?'image/png':'image/jpeg',position:pos,fit:'contain',alt:e.rasterReason});
   }
   if(e.id)ids.set(e.id,obj);
@@ -67,6 +68,7 @@ for(const [i,s] of doc.slides.entries()){
  if(s.notes)slide.speakerNotes.textFrame.setText(s.notes);
  report.slides.push({page:s.page??i+1,counts,warnings:s.warnings??[],rasterElements:s.elements.filter(e=>e.type==='image').map(e=>({id:e.id,reason:e.rasterReason})),reviewed:s.reviewed,reviewNotes:s.reviewNotes??''});
 }
+await fs.mkdir(path.dirname(out),{recursive:true});
 await(await PresentationFile.exportPptx(p)).save(out);
 await fs.writeFile(out+'.reconstruction.json',JSON.stringify(report,null,2));
 for(let i=0;i<p.slides.items.length;i++){const slide=p.slides.items[i];const preview=await p.export({slide,format:'png',scale:1});await fs.writeFile(out.replace(/\.pptx$/i,`-slide-${i+1}.png`),new Uint8Array(await preview.arrayBuffer()));}

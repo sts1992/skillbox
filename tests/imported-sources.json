@@ -87,13 +87,6 @@
       "commit": "7c4eb852de8d7c3e68c81802e1c59db9a611f914"
     },
     {
-      "local_path": "review-pr/scripts/resolve_spec_context.py",
-      "upstream_path": ".agents/skills/review-pr/scripts/resolve_spec_context.py",
-      "blob_sha": "6c918aadf6c902d8b0b0584226757966046a2dfd",
-      "upstream_repository": "warpdotdev/common-skills",
-      "commit": "7c4eb852de8d7c3e68c81802e1c59db9a611f914"
-    },
-    {
       "local_path": "review-pr/scripts/validate_review_json.py",
       "upstream_path": ".agents/skills/review-pr/scripts/validate_review_json.py",
       "blob_sha": "85333e80a750199f5dc2e83d876e32a5212b3944",
